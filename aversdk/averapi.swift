@@ -212,7 +212,14 @@ public class AverApi {
         URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error)  in
             guard let httpResponse = response as? HTTPURLResponse else { return }
             let code = httpResponse.statusCode
-            if(code != 200){
+            
+            if(code == 500){
+                completion(nil, AverApiError.serverError)
+            }
+            else if(code == 401){
+                completion(nil, AverApiError.unauthorized)
+            }
+            else if(code != 200){
                 completion(nil, NSError(domain:"averapi", code:httpResponse.statusCode, userInfo:nil))
             }
             else{

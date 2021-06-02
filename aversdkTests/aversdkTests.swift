@@ -1,63 +1,30 @@
 import XCTest
 @testable import aversdk
 
-final class ApiTests: XCTestCase {
-    private var api: AverApi!
-    private var key: String?
-    private var secret: String?
-    private var token: String?
+final class AverSdkTests: XCTestCase {
+    private var sdk: AverSdk!
 
     override func setUpWithError() throws {
-        let baseUrl = "http://192.168.1.154:51036/api"
-        self.key = "bf8d13db-3711-481a-9fbc-7b22b7ff8af9"
-        self.secret = "NDMzNDkxNTkxOWE0MzBkNTc5NGQyOTg1YmNmZWQ4MDMwM2NkMzY0MzM0OTE="
+        self.sdk = AverSdk()
         
-        self.api = AverApi(baseUrl: baseUrl)
-        try self.getAuthToken()
-    }
-    
-    override func tearDownWithError() throws {
-        self.api = nil
-    }
-
-    private func getAuthToken() throws {
-        let asyncExpectation = expectation(description: "testGetAuthToken")
-        var token: String?
-
-        self.api.getAuthToken(key: self.key!, secret: self.secret!) { authToken, authErr in
-            token = authToken
-            asyncExpectation.fulfill()
-        }
+        let asyncExpectation = expectation(description: "initApi")
         
-        self.waitForExpectations(timeout: 10) { error in
-            if(token != nil){
-                self.token = token
-                print("Token: " + token!)
+        self.sdk.auth(key: "bf8d13db-3711-481a-9fbc-7b22b7ff8af9", secret:"NDMzNDkxNTkxOWE0MzBkNTc5NGQyOTg1YmNmZWQ4MDMwM2NkMzY0MzM0OTE=") { res, err in
+            if(res != nil){
+                print("Connected: " + res!)
+                asyncExpectation.fulfill()
             }
         }
-    }
-    
-    func testRefreshAuthToken() throws {
-        let asyncExpectation = expectation(description: "testRefreshAuthToken")
-        var token: String?
 
-        self.api.refreshAuthToken(token: self.token!) { authToken, authErr in
-            token = authToken
-            asyncExpectation.fulfill()
-        }
-        
         self.waitForExpectations(timeout: 10) { error in
-            XCTAssertNotNil(token)
             XCTAssertNil(error)
         }
     }
     
-    func testEncodeKey() throws {
-        let encoded = self.api.encodeKey(key:"Test", secret:"Value")
-        print("Encoded: " + encoded!)
-        XCTAssertEqual("VGVzdDpWYWx1ZQ==", encoded)
+    override func tearDownWithError() throws {
+        self.sdk = nil
     }
-    
+
     func testCreateCheck() throws {
         let asyncExpectation = expectation(description: "testCreateCheck")
         var options: AverCheckCreateRequest
@@ -73,8 +40,7 @@ final class ApiTests: XCTestCase {
             overrideThirdPartyIdentifier: false
         )
         
-        self.api.createCheck(token: self.token!, options: options) { res, err in
-            print(err)
+        self.sdk.createCheck(options: options) { res, err in
             response = res!
             asyncExpectation.fulfill()
         }
@@ -89,7 +55,7 @@ final class ApiTests: XCTestCase {
         let asyncExpectation = expectation(description: "testCreateCheckAccessCode")
         var response: AverCheckAccessLinkResponse?
         
-        self.api.createCheckAccessLink(token: self.token!, id: "1234") { res, err in
+        self.sdk.createCheckAccessLink(id: "1234") { res, err in
             response = res!
             asyncExpectation.fulfill()
         }
@@ -104,7 +70,7 @@ final class ApiTests: XCTestCase {
         let asyncExpectation = expectation(description: "testGetCheckById")
         var response: AverCheckDetailResponse?
         
-        self.api.getCheckById(token: self.token!, id: "1234") { res, err in
+        self.sdk.getCheckById(id: "1234") { res, err in
             response = res!
             asyncExpectation.fulfill()
         }
@@ -119,7 +85,7 @@ final class ApiTests: XCTestCase {
         let asyncExpectation = expectation(description: "testGetCheckByThirdPartyIdentifier")
         var response: AverCheckDetailResponse?
         
-        self.api.getCheckByThirdPartyIdentifier(token: self.token!, thirdPartyIdentifier: "1234", all: true) { res, err in
+        self.sdk.getCheckByThirdPartyIdentifier(thirdPartyIdentifier: "1234", all: true) { res, err in
             response = res!
             asyncExpectation.fulfill()
         }
@@ -134,7 +100,7 @@ final class ApiTests: XCTestCase {
         let asyncExpectation = expectation(description: "testGetCheckResults")
         var response: AverCheckDetailResponse?
         
-        self.api.getCheckResults(token: self.token!, id: "1234") { res, err in
+        self.sdk.getCheckResults(id: "1234") { res, err in
             response = res!
             asyncExpectation.fulfill()
         }

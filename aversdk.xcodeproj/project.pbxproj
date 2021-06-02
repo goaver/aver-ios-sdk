@@ -7,12 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FB7C3AF42661639C00A8F150 /* avertypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7C3AF32661639C00A8F150 /* avertypes.swift */; };
 		FB7C3AF62661643E00A8F150 /* aversdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7C3AF52661643E00A8F150 /* aversdk.swift */; };
+		FBD121482668104700E04A03 /* avercheckstatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121472668104700E04A03 /* avercheckstatus.swift */; };
+		FBD1214A2668106900E04A03 /* avercheckstatusreason.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121492668106900E04A03 /* avercheckstatusreason.swift */; };
+		FBD1214C2668107900E04A03 /* averchecktype.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1214B2668107900E04A03 /* averchecktype.swift */; };
+		FBD1214E2668108D00E04A03 /* avercheckwarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1214D2668108D00E04A03 /* avercheckwarning.swift */; };
+		FBD12150266810BB00E04A03 /* avercheckdocumenttype.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1214F266810BB00E04A03 /* avercheckdocumenttype.swift */; };
+		FBD12152266810CD00E04A03 /* avercheckdocumentside.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD12151266810CD00E04A03 /* avercheckdocumentside.swift */; };
+		FBD12154266810DD00E04A03 /* averchecksupplementaldocumenttype.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD12153266810DD00E04A03 /* averchecksupplementaldocumenttype.swift */; };
+		FBD121562668115500E04A03 /* averauthresponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121552668115500E04A03 /* averauthresponse.swift */; };
+		FBD121582668116E00E04A03 /* avercheckcreaterequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121572668116E00E04A03 /* avercheckcreaterequest.swift */; };
+		FBD1215A2668118400E04A03 /* avercheckcreateresponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121592668118400E04A03 /* avercheckcreateresponse.swift */; };
+		FBD1215C2668119700E04A03 /* avercheckdetailresponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1215B2668119700E04A03 /* avercheckdetailresponse.swift */; };
+		FBD1215E266811BB00E04A03 /* avercheckaccesslinkresponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1215D266811BB00E04A03 /* avercheckaccesslinkresponse.swift */; };
+		FBD12160266811DC00E04A03 /* avercheckresults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1215F266811DC00E04A03 /* avercheckresults.swift */; };
+		FBD12162266811FE00E04A03 /* avercheckattestations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD12161266811FE00E04A03 /* avercheckattestations.swift */; };
+		FBD121642668121200E04A03 /* avercheckpersonalinformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121632668121200E04A03 /* avercheckpersonalinformation.swift */; };
+		FBD121662668123800E04A03 /* avercheckidentificationdocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121652668123800E04A03 /* avercheckidentificationdocument.swift */; };
+		FBD121682668125500E04A03 /* avercheckphotoverification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121672668125500E04A03 /* avercheckphotoverification.swift */; };
+		FBD1216A2668126E00E04A03 /* avercheckaddressverification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121692668126E00E04A03 /* avercheckaddressverification.swift */; };
+		FBD1216C2668128300E04A03 /* avercheckriskprofile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1216B2668128300E04A03 /* avercheckriskprofile.swift */; };
+		FBD1216E266812AD00E04A03 /* avercheckipanalysisresults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1216D266812AD00E04A03 /* avercheckipanalysisresults.swift */; };
+		FBD12170266812C300E04A03 /* averemailanalysisresults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1216F266812C300E04A03 /* averemailanalysisresults.swift */; };
+		FBD121722668183900E04A03 /* averautherror.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121712668183900E04A03 /* averautherror.swift */; };
+		FBD121742668187400E04A03 /* averapierror.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121732668187400E04A03 /* averapierror.swift */; };
 		FBECC523265DEAAC003235E7 /* aversdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBECC519265DEAAC003235E7 /* aversdk.framework */; };
 		FBECC52A265DEAAC003235E7 /* aversdk.h in Headers */ = {isa = PBXBuildFile; fileRef = FBECC51C265DEAAC003235E7 /* aversdk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FBECC534265DEB1B003235E7 /* averapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBECC533265DEB1B003235E7 /* averapi.swift */; };
-		FBECC536265EA5AE003235E7 /* apiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBECC535265EA5AE003235E7 /* apiTests.swift */; };
+		FBECC536265EA5AE003235E7 /* aversdkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBECC535265EA5AE003235E7 /* aversdkTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,15 +48,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FB7C3AF32661639C00A8F150 /* avertypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avertypes.swift; sourceTree = "<group>"; };
 		FB7C3AF52661643E00A8F150 /* aversdk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aversdk.swift; sourceTree = "<group>"; };
+		FBD121472668104700E04A03 /* avercheckstatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckstatus.swift; sourceTree = "<group>"; };
+		FBD121492668106900E04A03 /* avercheckstatusreason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckstatusreason.swift; sourceTree = "<group>"; };
+		FBD1214B2668107900E04A03 /* averchecktype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averchecktype.swift; sourceTree = "<group>"; };
+		FBD1214D2668108D00E04A03 /* avercheckwarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckwarning.swift; sourceTree = "<group>"; };
+		FBD1214F266810BB00E04A03 /* avercheckdocumenttype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckdocumenttype.swift; sourceTree = "<group>"; };
+		FBD12151266810CD00E04A03 /* avercheckdocumentside.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckdocumentside.swift; sourceTree = "<group>"; };
+		FBD12153266810DD00E04A03 /* averchecksupplementaldocumenttype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averchecksupplementaldocumenttype.swift; sourceTree = "<group>"; };
+		FBD121552668115500E04A03 /* averauthresponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averauthresponse.swift; sourceTree = "<group>"; };
+		FBD121572668116E00E04A03 /* avercheckcreaterequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckcreaterequest.swift; sourceTree = "<group>"; };
+		FBD121592668118400E04A03 /* avercheckcreateresponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckcreateresponse.swift; sourceTree = "<group>"; };
+		FBD1215B2668119700E04A03 /* avercheckdetailresponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckdetailresponse.swift; sourceTree = "<group>"; };
+		FBD1215D266811BB00E04A03 /* avercheckaccesslinkresponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckaccesslinkresponse.swift; sourceTree = "<group>"; };
+		FBD1215F266811DC00E04A03 /* avercheckresults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckresults.swift; sourceTree = "<group>"; };
+		FBD12161266811FE00E04A03 /* avercheckattestations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckattestations.swift; sourceTree = "<group>"; };
+		FBD121632668121200E04A03 /* avercheckpersonalinformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckpersonalinformation.swift; sourceTree = "<group>"; };
+		FBD121652668123800E04A03 /* avercheckidentificationdocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckidentificationdocument.swift; sourceTree = "<group>"; };
+		FBD121672668125500E04A03 /* avercheckphotoverification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckphotoverification.swift; sourceTree = "<group>"; };
+		FBD121692668126E00E04A03 /* avercheckaddressverification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckaddressverification.swift; sourceTree = "<group>"; };
+		FBD1216B2668128300E04A03 /* avercheckriskprofile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckriskprofile.swift; sourceTree = "<group>"; };
+		FBD1216D266812AD00E04A03 /* avercheckipanalysisresults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckipanalysisresults.swift; sourceTree = "<group>"; };
+		FBD1216F266812C300E04A03 /* averemailanalysisresults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averemailanalysisresults.swift; sourceTree = "<group>"; };
+		FBD121712668183900E04A03 /* averautherror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averautherror.swift; sourceTree = "<group>"; };
+		FBD121732668187400E04A03 /* averapierror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averapierror.swift; sourceTree = "<group>"; };
 		FBECC519265DEAAC003235E7 /* aversdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = aversdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBECC51C265DEAAC003235E7 /* aversdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aversdk.h; sourceTree = "<group>"; };
 		FBECC51D265DEAAC003235E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBECC522265DEAAC003235E7 /* aversdkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aversdkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBECC529265DEAAC003235E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBECC533265DEB1B003235E7 /* averapi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averapi.swift; sourceTree = "<group>"; };
-		FBECC535265EA5AE003235E7 /* apiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiTests.swift; sourceTree = "<group>"; };
+		FBECC535265EA5AE003235E7 /* aversdkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aversdkTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +100,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FBD121442668100400E04A03 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				FBD121552668115500E04A03 /* averauthresponse.swift */,
+				FBD121572668116E00E04A03 /* avercheckcreaterequest.swift */,
+				FBD121592668118400E04A03 /* avercheckcreateresponse.swift */,
+				FBD1215B2668119700E04A03 /* avercheckdetailresponse.swift */,
+				FBD1215D266811BB00E04A03 /* avercheckaccesslinkresponse.swift */,
+				FBD1215F266811DC00E04A03 /* avercheckresults.swift */,
+				FBD12161266811FE00E04A03 /* avercheckattestations.swift */,
+				FBD121632668121200E04A03 /* avercheckpersonalinformation.swift */,
+				FBD121652668123800E04A03 /* avercheckidentificationdocument.swift */,
+				FBD121672668125500E04A03 /* avercheckphotoverification.swift */,
+				FBD121692668126E00E04A03 /* avercheckaddressverification.swift */,
+				FBD1216B2668128300E04A03 /* avercheckriskprofile.swift */,
+				FBD1216D266812AD00E04A03 /* avercheckipanalysisresults.swift */,
+				FBD1216F266812C300E04A03 /* averemailanalysisresults.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		FBD121462668101F00E04A03 /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				FBD121472668104700E04A03 /* avercheckstatus.swift */,
+				FBD121492668106900E04A03 /* avercheckstatusreason.swift */,
+				FBD1214B2668107900E04A03 /* averchecktype.swift */,
+				FBD1214D2668108D00E04A03 /* avercheckwarning.swift */,
+				FBD1214F266810BB00E04A03 /* avercheckdocumenttype.swift */,
+				FBD12151266810CD00E04A03 /* avercheckdocumentside.swift */,
+				FBD12153266810DD00E04A03 /* averchecksupplementaldocumenttype.swift */,
+				FBD121712668183900E04A03 /* averautherror.swift */,
+				FBD121732668187400E04A03 /* averapierror.swift */,
+			);
+			path = enums;
+			sourceTree = "<group>";
+		};
 		FBECC50F265DEAAC003235E7 = {
 			isa = PBXGroup;
 			children = (
@@ -77,10 +158,11 @@
 		FBECC51B265DEAAC003235E7 /* aversdk */ = {
 			isa = PBXGroup;
 			children = (
+				FBD121462668101F00E04A03 /* enums */,
+				FBD121442668100400E04A03 /* models */,
 				FBECC51C265DEAAC003235E7 /* aversdk.h */,
 				FBECC51D265DEAAC003235E7 /* Info.plist */,
 				FBECC533265DEB1B003235E7 /* averapi.swift */,
-				FB7C3AF32661639C00A8F150 /* avertypes.swift */,
 				FB7C3AF52661643E00A8F150 /* aversdk.swift */,
 			);
 			path = aversdk;
@@ -90,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				FBECC529265DEAAC003235E7 /* Info.plist */,
-				FBECC535265EA5AE003235E7 /* apiTests.swift */,
+				FBECC535265EA5AE003235E7 /* aversdkTests.swift */,
 			);
 			path = aversdkTests;
 			sourceTree = "<group>";
@@ -204,9 +286,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBD121582668116E00E04A03 /* avercheckcreaterequest.swift in Sources */,
+				FBD121562668115500E04A03 /* averauthresponse.swift in Sources */,
+				FBD1214C2668107900E04A03 /* averchecktype.swift in Sources */,
+				FBD121482668104700E04A03 /* avercheckstatus.swift in Sources */,
+				FBD1216E266812AD00E04A03 /* avercheckipanalysisresults.swift in Sources */,
+				FBD1215C2668119700E04A03 /* avercheckdetailresponse.swift in Sources */,
+				FBD12152266810CD00E04A03 /* avercheckdocumentside.swift in Sources */,
+				FBD12154266810DD00E04A03 /* averchecksupplementaldocumenttype.swift in Sources */,
 				FBECC534265DEB1B003235E7 /* averapi.swift in Sources */,
+				FBD121682668125500E04A03 /* avercheckphotoverification.swift in Sources */,
+				FBD1215A2668118400E04A03 /* avercheckcreateresponse.swift in Sources */,
+				FBD12150266810BB00E04A03 /* avercheckdocumenttype.swift in Sources */,
+				FBD1215E266811BB00E04A03 /* avercheckaccesslinkresponse.swift in Sources */,
+				FBD12170266812C300E04A03 /* averemailanalysisresults.swift in Sources */,
+				FBD121642668121200E04A03 /* avercheckpersonalinformation.swift in Sources */,
+				FBD1214A2668106900E04A03 /* avercheckstatusreason.swift in Sources */,
+				FBD121722668183900E04A03 /* averautherror.swift in Sources */,
+				FBD121662668123800E04A03 /* avercheckidentificationdocument.swift in Sources */,
+				FBD1216A2668126E00E04A03 /* avercheckaddressverification.swift in Sources */,
 				FB7C3AF62661643E00A8F150 /* aversdk.swift in Sources */,
-				FB7C3AF42661639C00A8F150 /* avertypes.swift in Sources */,
+				FBD121742668187400E04A03 /* averapierror.swift in Sources */,
+				FBD12160266811DC00E04A03 /* avercheckresults.swift in Sources */,
+				FBD1214E2668108D00E04A03 /* avercheckwarning.swift in Sources */,
+				FBD12162266811FE00E04A03 /* avercheckattestations.swift in Sources */,
+				FBD1216C2668128300E04A03 /* avercheckriskprofile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBECC536265EA5AE003235E7 /* apiTests.swift in Sources */,
+				FBECC536265EA5AE003235E7 /* aversdkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
