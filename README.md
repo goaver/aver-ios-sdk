@@ -1,5 +1,3 @@
-# aver-ios-sdk
-
 <p align="center">
 <img src="https://github.com/goaver/api-integration/blob/master/images/aver_logo.png?raw=true" width="125px">
 </p>
