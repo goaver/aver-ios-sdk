@@ -15,4 +15,8 @@ public struct AverCheckCreateRequest {
     var language: AverLanguage = AverLanguage.english
     var skipPersonalAccessCode: Bool = false
     var overrideThirdPartyIdentifier: Bool = false
+    var checkTypes: [AverCheckType]?
+    var supplementalDocumentTypes: [AverCheckSupplementalDocumentType]?
+    var watchlistSearchCategories: [AverWatchlistSearchCategory]?
+    var watchlistRecheckInterval: AverWatchlistSearchRecheckInterval?
 }

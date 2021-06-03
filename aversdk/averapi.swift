@@ -42,7 +42,7 @@ internal class AverApi {
         
         return self.callService(token: token, endpoint: "/check/create", method: HttpMethod.post, params: params, modelType: AverCheckCreateResponse.self) as Result<AverCheckCreateResponse?,Error>
     }
-    
+
     public func getCheckById(token: String, id: String) -> Result<AverCheckDetailResponse?, Error> {
         print("averapi:getCheckById:" + id)
         return self.callService(token: token, endpoint: "/check/" + id, method: HttpMethod.get, params: nil, modelType: AverCheckDetailResponse.self) as Result<AverCheckDetailResponse?, Error>
@@ -170,5 +170,4 @@ internal class AverApi {
         }
         return nil
     }
-    
 }

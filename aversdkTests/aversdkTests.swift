@@ -35,7 +35,10 @@ final class AverSdkTests: XCTestCase {
             returnUrl: "",
             language: AverLanguage.english,
             skipPersonalAccessCode: false,
-            overrideThirdPartyIdentifier: false
+            overrideThirdPartyIdentifier: false,
+            supplementalDocumentTypes: [AverCheckSupplementalDocumentType.medicalCard],
+            watchlistSearchCategories: [AverWatchlistSearchCategory.financial],
+            watchlistRecheckInterval: AverWatchlistSearchRecheckInterval.daily
         )
         
         let result =  try self.sdk.createCheck(options: options)

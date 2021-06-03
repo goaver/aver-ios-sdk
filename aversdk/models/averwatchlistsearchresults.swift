@@ -12,10 +12,10 @@ public struct AverWatchlistSearchResults: Decodable {
     var groupId: String
     var organizationId: String
     var checkId: String?
-    var status: String?
+    var status: AverWatchlistSearchStatus
     var searchDate: String?
     var searchType: String?
-    var recheckInterval: Int?
+    var recheckInterval: AverWatchlistSearchRecheckInterval?
     var lastRecheckDate: String?
     var searchCriteria: AverWatchlistSearchCriteria?
     var watchlistResults: [AverWatchlistSearchWatchlistResults]?

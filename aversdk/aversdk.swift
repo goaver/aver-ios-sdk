@@ -65,7 +65,7 @@ public class AverSdk {
         return self.api.getCheckById(token: token!, id: id)
     }
     
-    public func getCheckByThirdPartyIdentifier(id: String, all: Bool? = true) throws -> Result<AverCheckDetailResponse?, Error> {
+    public func getCheckByThirdPartyIdentifier(id: String) throws -> Result<AverCheckDetailResponse?, Error> {
         let refresh = self.refreshAuth()
         let token = try refresh.get()
 
