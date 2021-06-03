@@ -15,5 +15,5 @@ public struct AverCheckResults: Decodable {
     var photoVerification: AverCheckPhotoVerification?
     var addressVerification: AverCheckAddressVerification?
     var riskProfile: AverCheckRiskProfile?
-    var warnings: [String]?
+    var warnings: [AverCheckWarning]?
 }

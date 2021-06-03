@@ -17,5 +17,5 @@ public struct AverWatchlistSearchRequest: Decodable {
     var stateOrProvince: String?
     var fileContent: String?
     var fileName: String?
-    var categories: [String]?
+    var categories: [AverWatchlistSearchCategory]?
 }

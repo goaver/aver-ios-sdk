@@ -7,10 +7,10 @@
 
 import Foundation
 
-public enum AverCheckSupplementalDocumentType{
-    case UtilityBill
-    case TaxDocument
-    case BankOrCreditCard
-    case AccreditedInvestor
-    case MedicalCard
+enum AverCheckSupplementalDocumentType: String, Decodable {
+    case utilityBill = "UtilityBill"
+    case taxDocument = "TaxDocument"
+    case bankOrCreditCard = "BankOrCreditCard"
+    case accreditedInvestor = "AccreditedInvestor"
+    case medicalCard = "MedicalCard"
 }

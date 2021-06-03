@@ -7,8 +7,8 @@
 
 import Foundation
 
-public enum AverCheckDocumentSide{
-    case None
-    case Front
-    case Back
+enum AverCheckDocumentSide: String, Decodable {
+    case none = "None"
+    case front = "Front"
+    case back = "Back"
 }

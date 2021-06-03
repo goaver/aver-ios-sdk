@@ -7,13 +7,13 @@
 
 import Foundation
 
-public enum AverCheckStatus {
-    case Canceled
-    case Created
-    case AwaitingUser
-    case AwaitingAutomation
-    case AwaitingReview
-    case InReview
-    case Rejected
-    case Completed
+enum AverCheckStatus: String, Decodable {
+    case canceled = "Canceled"
+    case created = "Created"
+    case awaitingUser = "AwaitingUser"
+    case awaitingAutomation = "AwaitingAutomation"
+    case awaitingReview = "AwaitingReview"
+    case inReview = "InReview"
+    case rejected = "Rejected"
+    case completed = "Completed"
 }

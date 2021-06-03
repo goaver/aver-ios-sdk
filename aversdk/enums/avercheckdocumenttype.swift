@@ -7,9 +7,9 @@
 
 import Foundation
 
-public enum AverCheckDocumentType{
-    case CamPhoto
-    case PassportImage
-    case NADriverLicense
-    case GenericIdentificationCardImage
+enum AverCheckDocumentType: String, Decodable {
+    case camPhoto = "CamPhoto"
+    case passportImage = "PassportImage"
+    case naDriverLicense = "NADriverLicense"
+    case genericIdentificationCardImage = "GenericIdentificationCardImage"
 }

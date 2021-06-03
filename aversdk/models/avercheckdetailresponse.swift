@@ -11,8 +11,8 @@ public struct AverCheckDetailResponse: Decodable {
     var id: String?
     var groupId: String?
     var thirdPartyIdentifier: String?
-    var status: String?
-    var checkTypes: [String]?
+    var status: AverCheckStatus
+    var checkTypes: [AverCheckType]?
     var checkResults: AverCheckResults?
-    var warnings: [String]?
+    var warnings: [AverCheckWarning]?
 }

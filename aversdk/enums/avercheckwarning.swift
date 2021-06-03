@@ -7,15 +7,15 @@
 
 import Foundation
 
-public enum AverCheckWarning {
-    case Country
-    case State
-    case IPVpnTor
-    case Address
-    case EmailAddress
-    case WatchlistHitsFound
-    case AdverseMediaFound
-    case SameEmailFound
-    case SameIdDocumentFound
-    case SameNameFound
+enum AverCheckWarning: String, Decodable {
+    case country = "Country"
+    case state = "State"
+    case ipVpnTor = "IPVpnTor"
+    case address = "Address"
+    case emailAddress = "EmailAddress"
+    case watchlistHitsFound = "WatchlistHitsFound"
+    case adverseMediaFound = "AdverseMediaFound"
+    case sameEmailFound = "SameEmailFound"
+    case sameIdDocumentFound = "SameIdDocumentFound"
+    case sameNameFound = "SameNameFound"
 }

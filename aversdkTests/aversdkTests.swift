@@ -33,7 +33,7 @@ final class AverSdkTests: XCTestCase {
             thirdPartyIdentifier: "1234",
             email: "someone@somewhere.com",
             returnUrl: "",
-            language: "en",
+            language: AverLanguage.english,
             skipPersonalAccessCode: false,
             overrideThirdPartyIdentifier: false
         )
@@ -105,7 +105,7 @@ final class AverSdkTests: XCTestCase {
             businessName: nil,
             country: "US",
             stateOrProvince: "CA",
-            categories: ["Criminal","Terrorism"]
+            categories: [AverWatchlistSearchCategory.criminal, AverWatchlistSearchCategory.financial]
         )
 
         let result = try self.sdk.createWatchlistSearch(options: options)

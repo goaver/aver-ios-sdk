@@ -38,6 +38,8 @@
 		FBD1217E26690D1D00E04A03 /* averwatchlistsearchcriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1217D26690D1D00E04A03 /* averwatchlistsearchcriteria.swift */; };
 		FBD1218026690DA000E04A03 /* averwatchlistsearchwatchlistresults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1217F26690DA000E04A03 /* averwatchlistsearchwatchlistresults.swift */; };
 		FBD1218226690DB900E04A03 /* averwatchlistsearchadversemediaresults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1218126690DB900E04A03 /* averwatchlistsearchadversemediaresults.swift */; };
+		FBD1218426691B0E00E04A03 /* avercheckcreaterequestadvanced.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1218326691B0E00E04A03 /* avercheckcreaterequestadvanced.swift */; };
+		FBD1218626691DA100E04A03 /* averlanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1218526691DA100E04A03 /* averlanguage.swift */; };
 		FBECC523265DEAAC003235E7 /* aversdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBECC519265DEAAC003235E7 /* aversdk.framework */; };
 		FBECC52A265DEAAC003235E7 /* aversdk.h in Headers */ = {isa = PBXBuildFile; fileRef = FBECC51C265DEAAC003235E7 /* aversdk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FBECC534265DEB1B003235E7 /* averapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBECC533265DEB1B003235E7 /* averapi.swift */; };
@@ -86,6 +88,8 @@
 		FBD1217D26690D1D00E04A03 /* averwatchlistsearchcriteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averwatchlistsearchcriteria.swift; sourceTree = "<group>"; };
 		FBD1217F26690DA000E04A03 /* averwatchlistsearchwatchlistresults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averwatchlistsearchwatchlistresults.swift; sourceTree = "<group>"; };
 		FBD1218126690DB900E04A03 /* averwatchlistsearchadversemediaresults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averwatchlistsearchadversemediaresults.swift; sourceTree = "<group>"; };
+		FBD1218326691B0E00E04A03 /* avercheckcreaterequestadvanced.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = avercheckcreaterequestadvanced.swift; sourceTree = "<group>"; };
+		FBD1218526691DA100E04A03 /* averlanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averlanguage.swift; sourceTree = "<group>"; };
 		FBECC519265DEAAC003235E7 /* aversdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = aversdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBECC51C265DEAAC003235E7 /* aversdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aversdk.h; sourceTree = "<group>"; };
 		FBECC51D265DEAAC003235E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				FBD1217D26690D1D00E04A03 /* averwatchlistsearchcriteria.swift */,
 				FBD1217F26690DA000E04A03 /* averwatchlistsearchwatchlistresults.swift */,
 				FBD1218126690DB900E04A03 /* averwatchlistsearchadversemediaresults.swift */,
+				FBD1218326691B0E00E04A03 /* avercheckcreaterequestadvanced.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				FBD121712668183900E04A03 /* averautherror.swift */,
 				FBD121732668187400E04A03 /* averapierror.swift */,
 				FBD1217B26690C2800E04A03 /* averwatchlistsearchcategory.swift */,
+				FBD1218526691DA100E04A03 /* averlanguage.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -332,8 +338,10 @@
 				FBD121662668123800E04A03 /* avercheckidentificationdocument.swift in Sources */,
 				FBD1216A2668126E00E04A03 /* avercheckaddressverification.swift in Sources */,
 				FB7C3AF62661643E00A8F150 /* aversdk.swift in Sources */,
+				FBD1218626691DA100E04A03 /* averlanguage.swift in Sources */,
 				FBD121742668187400E04A03 /* averapierror.swift in Sources */,
 				FBD1217826690B4000E04A03 /* averwatchlistsearchrequest.swift in Sources */,
+				FBD1218426691B0E00E04A03 /* avercheckcreaterequestadvanced.swift in Sources */,
 				FBD12160266811DC00E04A03 /* avercheckresults.swift in Sources */,
 				FBD1217A26690B7800E04A03 /* averwatchlistsearchresults.swift in Sources */,
 				FBD1214E2668108D00E04A03 /* avercheckwarning.swift in Sources */,

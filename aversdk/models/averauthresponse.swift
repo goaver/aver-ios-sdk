@@ -7,6 +7,6 @@
 
 import Foundation
 
-internal struct AverAuthResponse : Decodable {
+struct AverAuthResponse : Decodable {
     var token: String
 }

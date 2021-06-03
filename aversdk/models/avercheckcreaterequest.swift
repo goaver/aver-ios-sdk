@@ -12,7 +12,7 @@ public struct AverCheckCreateRequest {
     var thirdPartyIdentifier: String
     var email: String
     var returnUrl: String = ""
-    var language: String = "en"
+    var language: AverLanguage = AverLanguage.english
     var skipPersonalAccessCode: Bool = false
     var overrideThirdPartyIdentifier: Bool = false
 }

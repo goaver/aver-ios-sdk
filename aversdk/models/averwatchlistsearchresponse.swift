@@ -8,5 +8,5 @@
 import Foundation
 
 public struct AverWatchlistSearchResponse: Decodable {
-
+    var id: String
 }

@@ -7,13 +7,13 @@
 
 import Foundation
 
-public enum AverCheckType {
-    case EmailVerification
-    case DocumentVerification
-    case PhotoVerification
-    case AccreditedInvestor
-    case Watchlist
-    case VisualWatchlist
-    case RiskProfiling
-    case AddressVerification
+enum AverCheckType: String, Decodable {
+    case emailVerification = "EmailVerification"
+    case documentVerification = "DocumentVerification"
+    case photoVerification = "PhotoVerification"
+    case accreditedInvestor = "AccreditedInvestor"
+    case watchlist = "Watchlist"
+    case visualWatchlist = "VisualWatchlist"
+    case riskProfiling = "RiskProfiling"
+    case addressVerification = "AddressVerification"
 }

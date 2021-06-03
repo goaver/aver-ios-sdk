@@ -35,7 +35,7 @@ internal class AverApi {
             "thirdPartyIdentifier": options.thirdPartyIdentifier,
             "email": options.email,
             "returnUrl": options.returnUrl,
-            "language": options.language,
+            "language": options.language.rawValue,
             "skipPersonalAccessCode": options.skipPersonalAccessCode,
             "overrideThirdPartyIdentifier": options.overrideThirdPartyIdentifier
         ]
@@ -66,6 +66,13 @@ internal class AverApi {
     
     public func createWatchlistSearch(token: String, options: AverWatchlistSearchRequest) -> Result<AverWatchlistSearchResponse?,Error> {
         print("averapi:createWatchlistSearch")
+        var categories: [String]? = []
+        if(options.categories != nil){
+            for category in options.categories! {
+                categories?.append(category.rawValue)
+            }
+        }
+        
         let params: [String:Any] = [
             "groupId": options.groupId as Any,
             "firstName": options.firstName as Any,
@@ -76,7 +83,7 @@ internal class AverApi {
             "stateOrProvince": options.stateOrProvince as Any,
             "fileContent": options.fileContent as Any,
             "fileName": options.fileName as Any,
-            "categories": options.categories as Any
+            "categories": categories as Any
         ]
         
         return self.callService(token: token, endpoint: "/watchlist/search", method: HttpMethod.post, params: params, modelType: AverWatchlistSearchResponse.self) as Result<AverWatchlistSearchResponse?,Error>

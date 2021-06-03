@@ -10,5 +10,5 @@ import Foundation
 public struct AverCheckRiskProfile: Decodable {
     var facialMatchConfidence: Int?
     var ipAndDeviceAnalysisResults: AverCheckIpAnalysisResults?
-    var emialAnalysisResults: AverEmailAnalysisResults?
+    var emailAnalysisResults: AverEmailAnalysisResults?
 }

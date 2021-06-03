@@ -7,12 +7,12 @@
 
 import Foundation
 
-public enum AverCheckStatusReason{
-    case MissingDocuments
-    case UnreadableDocumentsOrMissingVerificationInformation
-    case ExpiredDocuments
-    case SuspiciousDocumentsOrImages
-    case FacialVerificationFailed
-    case UnderageApplicant
+enum AverCheckStatusReason: String, Decodable {
+    case missingDocuments = "MissingDocuments"
+    case unreadableDocumentsOrMissingVerificationInformation = "UnreadableDocumentsOrMissingVerificationInformation"
+    case expiredDocuments = "ExpiredDocuments"
+    case suspiciousDocumentsOrImages = "SuspiciousDocumentsOrImages"
+    case facialVerificationFailed = "FacialVerificationFailed"
+    case underageApplicant = "UnderageApplicant"
 }
 
