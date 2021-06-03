@@ -31,6 +31,13 @@
 		FBD12170266812C300E04A03 /* averemailanalysisresults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1216F266812C300E04A03 /* averemailanalysisresults.swift */; };
 		FBD121722668183900E04A03 /* averautherror.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121712668183900E04A03 /* averautherror.swift */; };
 		FBD121742668187400E04A03 /* averapierror.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD121732668187400E04A03 /* averapierror.swift */; };
+		FBD1217626690B2400E04A03 /* averwatchlistsearchresponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1217526690B2400E04A03 /* averwatchlistsearchresponse.swift */; };
+		FBD1217826690B4000E04A03 /* averwatchlistsearchrequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1217726690B4000E04A03 /* averwatchlistsearchrequest.swift */; };
+		FBD1217A26690B7800E04A03 /* averwatchlistsearchresults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1217926690B7800E04A03 /* averwatchlistsearchresults.swift */; };
+		FBD1217C26690C2800E04A03 /* averwatchlistsearchcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1217B26690C2800E04A03 /* averwatchlistsearchcategory.swift */; };
+		FBD1217E26690D1D00E04A03 /* averwatchlistsearchcriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1217D26690D1D00E04A03 /* averwatchlistsearchcriteria.swift */; };
+		FBD1218026690DA000E04A03 /* averwatchlistsearchwatchlistresults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1217F26690DA000E04A03 /* averwatchlistsearchwatchlistresults.swift */; };
+		FBD1218226690DB900E04A03 /* averwatchlistsearchadversemediaresults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1218126690DB900E04A03 /* averwatchlistsearchadversemediaresults.swift */; };
 		FBECC523265DEAAC003235E7 /* aversdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBECC519265DEAAC003235E7 /* aversdk.framework */; };
 		FBECC52A265DEAAC003235E7 /* aversdk.h in Headers */ = {isa = PBXBuildFile; fileRef = FBECC51C265DEAAC003235E7 /* aversdk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FBECC534265DEB1B003235E7 /* averapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBECC533265DEB1B003235E7 /* averapi.swift */; };
@@ -72,6 +79,13 @@
 		FBD1216F266812C300E04A03 /* averemailanalysisresults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averemailanalysisresults.swift; sourceTree = "<group>"; };
 		FBD121712668183900E04A03 /* averautherror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averautherror.swift; sourceTree = "<group>"; };
 		FBD121732668187400E04A03 /* averapierror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averapierror.swift; sourceTree = "<group>"; };
+		FBD1217526690B2400E04A03 /* averwatchlistsearchresponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averwatchlistsearchresponse.swift; sourceTree = "<group>"; };
+		FBD1217726690B4000E04A03 /* averwatchlistsearchrequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averwatchlistsearchrequest.swift; sourceTree = "<group>"; };
+		FBD1217926690B7800E04A03 /* averwatchlistsearchresults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averwatchlistsearchresults.swift; sourceTree = "<group>"; };
+		FBD1217B26690C2800E04A03 /* averwatchlistsearchcategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averwatchlistsearchcategory.swift; sourceTree = "<group>"; };
+		FBD1217D26690D1D00E04A03 /* averwatchlistsearchcriteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averwatchlistsearchcriteria.swift; sourceTree = "<group>"; };
+		FBD1217F26690DA000E04A03 /* averwatchlistsearchwatchlistresults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averwatchlistsearchwatchlistresults.swift; sourceTree = "<group>"; };
+		FBD1218126690DB900E04A03 /* averwatchlistsearchadversemediaresults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = averwatchlistsearchadversemediaresults.swift; sourceTree = "<group>"; };
 		FBECC519265DEAAC003235E7 /* aversdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = aversdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBECC51C265DEAAC003235E7 /* aversdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = aversdk.h; sourceTree = "<group>"; };
 		FBECC51D265DEAAC003235E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +131,12 @@
 				FBD1216B2668128300E04A03 /* avercheckriskprofile.swift */,
 				FBD1216D266812AD00E04A03 /* avercheckipanalysisresults.swift */,
 				FBD1216F266812C300E04A03 /* averemailanalysisresults.swift */,
+				FBD1217526690B2400E04A03 /* averwatchlistsearchresponse.swift */,
+				FBD1217726690B4000E04A03 /* averwatchlistsearchrequest.swift */,
+				FBD1217926690B7800E04A03 /* averwatchlistsearchresults.swift */,
+				FBD1217D26690D1D00E04A03 /* averwatchlistsearchcriteria.swift */,
+				FBD1217F26690DA000E04A03 /* averwatchlistsearchwatchlistresults.swift */,
+				FBD1218126690DB900E04A03 /* averwatchlistsearchadversemediaresults.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -133,6 +153,7 @@
 				FBD12153266810DD00E04A03 /* averchecksupplementaldocumenttype.swift */,
 				FBD121712668183900E04A03 /* averautherror.swift */,
 				FBD121732668187400E04A03 /* averapierror.swift */,
+				FBD1217B26690C2800E04A03 /* averwatchlistsearchcategory.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -286,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBD1217E26690D1D00E04A03 /* averwatchlistsearchcriteria.swift in Sources */,
 				FBD121582668116E00E04A03 /* avercheckcreaterequest.swift in Sources */,
 				FBD121562668115500E04A03 /* averauthresponse.swift in Sources */,
 				FBD1214C2668107900E04A03 /* averchecktype.swift in Sources */,
@@ -293,21 +315,27 @@
 				FBD1216E266812AD00E04A03 /* avercheckipanalysisresults.swift in Sources */,
 				FBD1215C2668119700E04A03 /* avercheckdetailresponse.swift in Sources */,
 				FBD12152266810CD00E04A03 /* avercheckdocumentside.swift in Sources */,
+				FBD1217626690B2400E04A03 /* averwatchlistsearchresponse.swift in Sources */,
 				FBD12154266810DD00E04A03 /* averchecksupplementaldocumenttype.swift in Sources */,
 				FBECC534265DEB1B003235E7 /* averapi.swift in Sources */,
 				FBD121682668125500E04A03 /* avercheckphotoverification.swift in Sources */,
 				FBD1215A2668118400E04A03 /* avercheckcreateresponse.swift in Sources */,
 				FBD12150266810BB00E04A03 /* avercheckdocumenttype.swift in Sources */,
 				FBD1215E266811BB00E04A03 /* avercheckaccesslinkresponse.swift in Sources */,
+				FBD1217C26690C2800E04A03 /* averwatchlistsearchcategory.swift in Sources */,
 				FBD12170266812C300E04A03 /* averemailanalysisresults.swift in Sources */,
+				FBD1218026690DA000E04A03 /* averwatchlistsearchwatchlistresults.swift in Sources */,
 				FBD121642668121200E04A03 /* avercheckpersonalinformation.swift in Sources */,
+				FBD1218226690DB900E04A03 /* averwatchlistsearchadversemediaresults.swift in Sources */,
 				FBD1214A2668106900E04A03 /* avercheckstatusreason.swift in Sources */,
 				FBD121722668183900E04A03 /* averautherror.swift in Sources */,
 				FBD121662668123800E04A03 /* avercheckidentificationdocument.swift in Sources */,
 				FBD1216A2668126E00E04A03 /* avercheckaddressverification.swift in Sources */,
 				FB7C3AF62661643E00A8F150 /* aversdk.swift in Sources */,
 				FBD121742668187400E04A03 /* averapierror.swift in Sources */,
+				FBD1217826690B4000E04A03 /* averwatchlistsearchrequest.swift in Sources */,
 				FBD12160266811DC00E04A03 /* avercheckresults.swift in Sources */,
+				FBD1217A26690B7800E04A03 /* averwatchlistsearchresults.swift in Sources */,
 				FBD1214E2668108D00E04A03 /* avercheckwarning.swift in Sources */,
 				FBD12162266811FE00E04A03 /* avercheckattestations.swift in Sources */,
 				FBD1216C2668128300E04A03 /* avercheckriskprofile.swift in Sources */,

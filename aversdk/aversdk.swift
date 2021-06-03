@@ -20,7 +20,7 @@ public class AverSdk {
         let res = self.api.getAuthToken(key: key, secret: secret)
         switch res {
             case .success(let auth):
-                print("Auth token: " + auth!.token)
+                print("aversdk:auth:" + auth!.token)
                 self.token = auth!.token
                 result = .success(auth!.token)
             case .failure(let error):
@@ -45,37 +45,65 @@ public class AverSdk {
     }
     
     public func createCheck(options: AverCheckCreateRequest) throws -> Result<AverCheckCreateResponse?, Error> {
-        let refresh = try self.refreshAuth()
+        let refresh = self.refreshAuth()
         let token = try refresh.get()
 
         return self.api.createCheck(token: token!, options: options)
     }
     
     public func getCheckAccessLink(id: String) throws -> Result<AverCheckAccessLinkResponse?, Error> {
-        let refresh = try self.refreshAuth()
+        let refresh = self.refreshAuth()
         let token = try refresh.get()
 
         return self.api.getCheckAccessLink(token: token!, id: id)
     }
     
     public func getCheckById(id: String) throws -> Result<AverCheckDetailResponse?, Error> {
-        let refresh = try self.refreshAuth()
+        let refresh = self.refreshAuth()
         let token = try refresh.get()
 
         return self.api.getCheckById(token: token!, id: id)
     }
     
-    public func getCheckByThirdPartyIdentifier(thirdPartyIdentifier: String, all: Bool? = true) throws -> Result<AverCheckDetailResponse?, Error> {
-        let refresh = try self.refreshAuth()
+    public func getCheckByThirdPartyIdentifier(id: String, all: Bool? = true) throws -> Result<AverCheckDetailResponse?, Error> {
+        let refresh = self.refreshAuth()
         let token = try refresh.get()
 
-        return self.api.getCheckByThirdPartyIdentifier(token: token!, thirdPartyIdentifier: thirdPartyIdentifier)
+        return self.api.getCheckByThirdPartyIdentifier(token: token!, id: id)
     }
     
     public func getCheckResults(id: String) throws -> Result<AverCheckDetailResponse?, Error> {
-        let refresh = try self.refreshAuth()
+        let refresh = self.refreshAuth()
         let token = try refresh.get()
 
         return self.api.getCheckResults(token: token!, id: id)
+    }
+    
+    public func createWatchlistSearch(options: AverWatchlistSearchRequest) throws -> Result<AverWatchlistSearchResponse?, Error>{
+        let refresh = self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.createWatchlistSearch(token: token!, options: options)
+    }
+    
+    public func getWatchlistSearchById(id: String) throws -> Result<AverWatchlistSearchResults?, Error>{
+        let refresh = self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.getWatchlistSearchById(token: token!, id: id)
+    }
+    
+    public func getWatchlistSearchByCheckId(id: String) throws -> Result<AverWatchlistSearchResults?, Error> {
+        let refresh = self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.getWatchlistSearchByCheckId(token: token!, id: id)
+    }
+    
+    public func getWatchlistSearchResults(id: String) throws -> Result<AverWatchlistSearchResults?, Error> {
+        let refresh = self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.getWatchlistSearchResults(token: token!, id: id)
     }
 }

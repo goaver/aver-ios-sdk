@@ -11,8 +11,8 @@ final class AverSdkTests: XCTestCase {
         
         let res = self.sdk.auth(key: "bf8d13db-3711-481a-9fbc-7b22b7ff8af9", secret:"NDMzNDkxNTkxOWE0MzBkNTc5NGQyOTg1YmNmZWQ4MDMwM2NkMzY0MzM0OTE=")
         switch res {
-            case .success(let token):
-                print("Authenticated: " + token!)
+            case .success(_):
+                print("aversdktests: Setup successful")
             case .failure(let error):
                 throw(error)
         }
@@ -74,7 +74,7 @@ final class AverSdkTests: XCTestCase {
     func testGetCheckByThirdPartyIdentifier() throws {
         let asyncExpectation = expectation(description: "testGetCheckByThirdPartyIdentifier")
     
-        let result = try self.sdk.getCheckByThirdPartyIdentifier(thirdPartyIdentifier: "1234")
+        let result = try self.sdk.getCheckByThirdPartyIdentifier(id: "1234")
         let value = try result.get()
         asyncExpectation.fulfill()
         
@@ -87,6 +87,64 @@ final class AverSdkTests: XCTestCase {
         let asyncExpectation = expectation(description: "testGetCheckResults")
 
         let result = try self.sdk.getCheckResults(id: "1234")
+        let value = try result.get()
+        asyncExpectation.fulfill()
+        
+        self.waitForExpectations(timeout: 10) { error in
+            XCTAssertNotNil(value)
+        }
+    }
+    
+    func testCreateWatchlistSearch() throws {
+        let asyncExpectation = expectation(description: "testCreateWatchlistSearch")
+        let options:AverWatchlistSearchRequest = AverWatchlistSearchRequest(
+            groupId: "1234",
+            firstName: "Test",
+            middleName: nil,
+            lastName: "User",
+            businessName: nil,
+            country: "US",
+            stateOrProvince: "CA",
+            categories: ["Criminal","Terrorism"]
+        )
+
+        let result = try self.sdk.createWatchlistSearch(options: options)
+        let value = try result.get()
+        asyncExpectation.fulfill()
+        
+        self.waitForExpectations(timeout: 10) { error in
+            XCTAssertNotNil(value)
+        }
+    }
+    
+    func testGetWatchlistSearchById() throws {
+        let asyncExpectation = expectation(description: "testGetWatchlistSearchById")
+
+        let result = try self.sdk.getWatchlistSearchById(id: "1234")
+        let value = try result.get()
+        asyncExpectation.fulfill()
+        
+        self.waitForExpectations(timeout: 10) { error in
+            XCTAssertNotNil(value)
+        }
+    }
+    
+    func testGetWatchlistSearchByCheckId() throws {
+        let asyncExpectation = expectation(description: "testGetWatchlistSearchByCheckId")
+
+        let result = try self.sdk.getWatchlistSearchByCheckId(id: "1234")
+        let value = try result.get()
+        asyncExpectation.fulfill()
+        
+        self.waitForExpectations(timeout: 10) { error in
+            XCTAssertNotNil(value)
+        }
+    }
+    
+    func testGetWatchlistSearchResults() throws {
+        let asyncExpectation = expectation(description: "testGetWatchlistSearchResults")
+
+        let result = try self.sdk.getWatchlistSearchResults(id: "1234")
         let value = try result.get()
         asyncExpectation.fulfill()
         
