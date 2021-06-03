@@ -51,7 +51,7 @@ final class AverSdkTests: XCTestCase {
     }
     
     func testGetCheckAccessCode() throws {
-        let asyncExpectation = expectation(description: "testCreateCheckAccessCode")
+        let asyncExpectation = expectation(description: "testGetCheckAccessCode")
         
         let result = try self.sdk.getCheckAccessLink(id: "1234")
         let value = try result.get()
@@ -59,6 +59,118 @@ final class AverSdkTests: XCTestCase {
         
         self.waitForExpectations(timeout: 10) { error in
             XCTAssertNotNil(value)
+        }
+    }
+    
+    func testAddCheckPersonalInfo() throws {
+        let asyncExpectation = expectation(description: "testAddCheckPersonalInfo")
+        
+        let options: AverCheckPersonalInformationRequest = AverCheckPersonalInformationRequest(
+            email: "some@user.com",
+            firstName: "Some",
+            middleName: nil,
+            lastName: "Person",
+            gender: "M",
+            dateOfBirth: "01/01/1980",
+            stateProvince: "CA",
+            country: "US",
+            streetAddress1: "1234 Some Street",
+            streetAddress2: nil,
+            city: "Los Angeles",
+            postalCode: "90001")
+        
+        let result = try self.sdk.addCheckPersonalInfo(id: "1234", options: options)
+        asyncExpectation.fulfill()
+        
+        self.waitForExpectations(timeout: 10) { error in
+            switch result {
+                case .failure(_):
+                    XCTFail("Failed")
+                case .success(_):
+                    print("Success")
+            }
+        }
+    }
+    
+    func testAddCheckIdDocument() throws {
+        let asyncExpectation = expectation(description: "testAddCheckIdDocument")
+        
+        let options: AverCheckIdDocumentRequest = AverCheckIdDocumentRequest (
+            docType: AverCheckDocumentType.naDriverLicense,
+            side: AverCheckDocumentSide.front,
+            fileName: "somefile.jpg",
+            fileContent: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACJQAAAcVCAYAAADftBhiAAAAAXNSR0IB2cksf..."
+        )
+        
+        let result = try self.sdk.addCheckIdDocument(id: "1234", options: options)
+        asyncExpectation.fulfill()
+        
+        self.waitForExpectations(timeout: 10) { error in
+            switch result {
+                case .failure(_):
+                    XCTFail("Failed")
+                case .success(_):
+                    print("Success")
+            }
+        }
+    }
+    
+    func testAddCheckPhoto() throws {
+        let asyncExpectation = expectation(description: "testAddCheckPhoto")
+        
+        let options: AverCheckPhotoRequest = AverCheckPhotoRequest(
+            fileName: "somefile.jpg",
+            fileContent: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACJQAAAcVCAYAAADftBhiAAAAAXNSR0IB2cksf...",
+            forceCommit: false
+        )
+        
+        let result = try self.sdk.addCheckPhoto(id: "1234", options: options)
+        asyncExpectation.fulfill()
+        
+        self.waitForExpectations(timeout: 10) { error in
+            switch result {
+                case .failure(_):
+                    XCTFail("Failed")
+                case .success(_):
+                    print("Success")
+            }
+        }
+    }
+    
+    func testAddCheckSupplementalDocument() throws {
+        let asyncExpectation = expectation(description: "testAddCheckSupplementalDocument")
+        
+        let options: AverCheckSupplementalDocumentRequest = AverCheckSupplementalDocumentRequest(
+            docType: AverCheckSupplementalDocumentType.medicalCard,
+            fileName: "somefile.jpg",
+            fileContent: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACJQAAAcVCAYAAADftBhiAAAAAXNSR0IB2cksf..."
+        )
+        
+        let result = try self.sdk.addCheckSupplementalDocument(id: "1234", options: options)
+        asyncExpectation.fulfill()
+        
+        self.waitForExpectations(timeout: 10) { error in
+            switch result {
+                case .failure(_):
+                    XCTFail("Failed")
+                case .success(_):
+                    print("Success")
+            }
+        }
+    }
+    
+    func testSubmitCheck() throws {
+        let asyncExpectation = expectation(description: "testSubmitCheck")
+        let result = try self.sdk.submitCheck(id: "1234")
+        asyncExpectation.fulfill()
+        
+        self.waitForExpectations(timeout: 10) { error in
+            switch result {
+                case .failure(_):
+                    XCTFail("Failed")
+                case .success(_):
+                    print("Success")
+            }
         }
     }
     

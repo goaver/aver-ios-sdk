@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class AverSdk {
     private var api: AverApi
@@ -44,6 +45,11 @@ public class AverSdk {
         return result
     }
     
+    public func getImageBase64(img: UIImage) throws -> String {
+        let helpers: AverHelpers = AverHelpers()
+        return helpers.convertImageToBase64String(img: img)
+    }
+    
     public func createCheck(options: AverCheckCreateRequest) throws -> Result<AverCheckCreateResponse?, Error> {
         let refresh = self.refreshAuth()
         let token = try refresh.get()
@@ -56,6 +62,41 @@ public class AverSdk {
         let token = try refresh.get()
 
         return self.api.getCheckAccessLink(token: token!, id: id)
+    }
+    
+    public func addCheckPersonalInfo(id: String, options: AverCheckPersonalInformationRequest) throws -> Result<String?,Error> {
+        let refresh = self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.addCheckPersonalInfo(token: token!, id: id, options: options)
+    }
+    
+    public func addCheckIdDocument(id: String, options: AverCheckIdDocumentRequest) throws -> Result<String?,Error> {
+        let refresh = self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.addCheckIdDocument(token: token!, id: id, options: options)
+    }
+    
+    public func addCheckPhoto(id: String, options: AverCheckPhotoRequest) throws -> Result<String?, Error> {
+        let refresh = self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.addCheckPhoto(token: token!, id: id, options: options)
+    }
+    
+    public func addCheckSupplementalDocument(id: String, options: AverCheckSupplementalDocumentRequest) throws -> Result<String?, Error> {
+        let refresh = self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.addCheckSupplementalDocument(token: token!, id: id, options: options)
+    }
+    
+    public func submitCheck(id: String) throws -> Result<String?, Error> {
+        let refresh = self.refreshAuth()
+        let token = try refresh.get()
+
+        return try self.api.submitCheck(token: token!, id: id)
     }
     
     public func getCheckById(id: String) throws -> Result<AverCheckDetailResponse?, Error> {
@@ -77,6 +118,13 @@ public class AverSdk {
         let token = try refresh.get()
 
         return self.api.getCheckResults(token: token!, id: id)
+    }
+    
+    public func getCheckDocument(checkId: String, docId: String) throws -> Result<AverCheckDocumentContent?, Error> {
+        let refresh = self.refreshAuth()
+        let token = try refresh.get()
+        
+        return self.api.getCheckDocument(token: token!, checkId: checkId, docId: docId)
     }
     
     public func createWatchlistSearch(options: AverWatchlistSearchRequest) throws -> Result<AverWatchlistSearchResponse?, Error>{

@@ -48,12 +48,12 @@ internal class AverApi {
         return self.callService(token: token, endpoint: "/check/" + id, method: HttpMethod.get, params: nil, modelType: AverCheckDetailResponse.self) as Result<AverCheckDetailResponse?, Error>
     }
     
-    public func getCheckByThirdPartyIdentifier(token: String, id: String)  -> Result<AverCheckDetailResponse?, Error> {
+    public func getCheckByThirdPartyIdentifier(token: String, id: String) -> Result<AverCheckDetailResponse?, Error> {
         print("averapi:getCheckByThirdPartyIdentifier:" + id)
         return self.callService(token: token, endpoint: "/check/getbythirdpartyidentifier/" + id, method: HttpMethod.get, params: nil, modelType: AverCheckDetailResponse.self) as Result<AverCheckDetailResponse?,Error>
     }
     
-    public func getCheckResults(token: String, id: String)  -> Result<AverCheckDetailResponse?, Error> {
+    public func getCheckResults(token: String, id: String) -> Result<AverCheckDetailResponse?, Error> {
         print("averapi:getCheckResults:" + id)
         return self.callService(token: token, endpoint: "/check/" + id + "/results", method: HttpMethod.get, params: nil, modelType: AverCheckDetailResponse.self) as Result<AverCheckDetailResponse?, Error>
     }
@@ -62,6 +62,70 @@ internal class AverApi {
         print("averapi:getCheckAccessLink:" + id)
         let params: [String:Any] = ["language": language, "returnUrl": returnUrl]
         return self.callService(token: token, endpoint: "/check/" + id + "/accesslink", method: HttpMethod.post, params: params, modelType: AverCheckAccessLinkResponse.self) as Result<AverCheckAccessLinkResponse?, Error>
+    }
+    
+    public func getCheckDocument(token: String, checkId: String, docId: String) -> Result<AverCheckDocumentContent?, Error> {
+        print("averapi:checkDocument:check:" + checkId + "-doc:" + docId)
+        return self.callService(token: token, endpoint: "/checkdocument/" + checkId + "/" + docId, method: HttpMethod.get, params: nil, modelType: AverCheckDocumentContent.self) as Result<AverCheckDocumentContent?, Error>
+    }
+    
+    public func addCheckPersonalInfo(token: String, id: String, options: AverCheckPersonalInformationRequest) -> Result<String?, Error> {
+        print("averapi:addCheckPersonalInfo:" + id)
+        let params: [String:Any] = [
+            "firstName": options.firstName as Any,
+            "middleName": options.middleName as Any,
+            "lastName": options.lastName as Any,
+            "dateOfBirth": options.dateOfBirth as Any,
+            "email": options.email as Any,
+            "gender": options.gender as Any,
+            "country": options.country as Any,
+            "state": options.stateProvince as Any,
+            "streetAddress1": options.streetAddress1 as Any,
+            "streetAddress2": options.streetAddress2 as Any,
+            "city": options.city as Any,
+            "postalCode": options.postalCode as Any
+        ]
+        
+        return self.callService(token: token, endpoint: "/check/" + id + "/personalinfo", method: HttpMethod.post, params: params, modelType: String.self) as Result<String?, Error>
+    }
+    
+    public func addCheckIdDocument(token: String, id: String, options: AverCheckIdDocumentRequest) -> Result<String?,Error> {  print("averapi:addCheckPersonalInfo:" + id)
+        print("averapi:addCheckIdDocument:" + id)
+        let params: [String:Any] = [
+            "docType": options.docType.rawValue,
+            "side:": options.side.rawValue,
+            "fileName": options.fileName,
+            "fileContent": options.fileContent,
+            "forceCommit": options.forceCommit
+        ]
+        
+        return self.callService(token: token, endpoint: "/check/" + id + "/iddocument", method: HttpMethod.post, params: params, modelType: String.self) as Result<String?, Error>
+    }
+    
+    public func addCheckPhoto(token: String, id: String, options: AverCheckPhotoRequest) -> Result<String?, Error> {
+        print("averapi:addCheckPhoto:" + id)
+        let params: [String:Any] = [
+            "fileName": options.fileName,
+            "fileContent": options.fileContent,
+            "forceCommit": options.forceCommit
+        ]
+        
+        return self.callService(token: token, endpoint: "/check/" + id + "/photodocument", method: HttpMethod.post, params: params, modelType: String.self) as Result<String?, Error>
+    }
+    
+    public func addCheckSupplementalDocument(token: String, id: String, options: AverCheckSupplementalDocumentRequest) -> Result<String?, Error> {
+        print("averapi:addCheckSupplementalDocument:" + id)
+        let params: [String:Any] = [
+            "docType": options.docType.rawValue,
+            "fileName": options.fileName,
+            "fileContent": options.fileContent
+        ]
+        
+        return self.callService(token: token, endpoint: "/check/" + id + "/supplementaldocument", method: HttpMethod.post, params: params, modelType: String.self) as Result<String?, Error>
+    }
+    
+    public func submitCheck(token: String, id: String) throws -> Result<String?, Error> {
+        return self.callService(token: token, endpoint: "/check/" + id + "/submit", method: HttpMethod.get, params: nil, modelType: String.self) as Result<String?, Error>
     }
     
     public func createWatchlistSearch(token: String, options: AverWatchlistSearchRequest) -> Result<AverWatchlistSearchResponse?,Error> {
@@ -104,7 +168,7 @@ internal class AverApi {
         return self.callService(token: token, endpoint: "/watchlist/" + id + "/results", method: HttpMethod.get, params: nil, modelType: AverWatchlistSearchResults.self) as Result<AverWatchlistSearchResults?, Error>
     }
     
-    private func callService<T:Decodable>(token: String, endpoint:String, method: HttpMethod, params: Any?, modelType: T.Type) -> Result<T?,Error> {
+    private func callService<T:Decodable>(token: String, endpoint:String, method: HttpMethod, params: Any?, modelType: T.Type?) -> Result<T?,Error> {
         var result: Result<T?, Error>!
         
         guard let url = URL(string: self.baseUrl + endpoint) else { return .failure(AverApiError.urlError) }
@@ -137,8 +201,14 @@ internal class AverApi {
                 do{
                     let str = String(decoding: data, as: UTF8.self)
                     print("averapi:response:" + str)
-                    let obj = try JSONDecoder().decode(modelType, from: data)
-                    result = .success(obj)
+                    
+                    if(modelType != String.self && modelType != nil){
+                        let obj = try JSONDecoder().decode(modelType!, from: data)
+                        result = .success(obj)
+                    }
+                    else{
+                        result = .success(nil)
+                    }
                 }
                 catch{
                     if(code == 500){
