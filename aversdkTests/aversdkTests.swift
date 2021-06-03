@@ -9,13 +9,14 @@ final class AverSdkTests: XCTestCase {
         
         let asyncExpectation = expectation(description: "initApi")
         
-        self.sdk.auth(key: "bf8d13db-3711-481a-9fbc-7b22b7ff8af9", secret:"NDMzNDkxNTkxOWE0MzBkNTc5NGQyOTg1YmNmZWQ4MDMwM2NkMzY0MzM0OTE=") { res, err in
-            if(res != nil){
-                print("Connected: " + res!)
-                asyncExpectation.fulfill()
-            }
+        let res = self.sdk.auth(key: "bf8d13db-3711-481a-9fbc-7b22b7ff8af9", secret:"NDMzNDkxNTkxOWE0MzBkNTc5NGQyOTg1YmNmZWQ4MDMwM2NkMzY0MzM0OTE=")
+        switch res {
+            case .success(let token):
+                print("Authenticated: " + token!)
+            case .failure(let error):
+                throw(error)
         }
-
+        asyncExpectation.fulfill()
         self.waitForExpectations(timeout: 10) { error in
             XCTAssertNil(error)
         }
@@ -27,10 +28,7 @@ final class AverSdkTests: XCTestCase {
 
     func testCreateCheck() throws {
         let asyncExpectation = expectation(description: "testCreateCheck")
-        var options: AverCheckCreateRequest
-        var response: AverCheckCreateResponse?
-        
-        options = AverCheckCreateRequest(
+        let options:AverCheckCreateRequest = AverCheckCreateRequest(
             groupId: "1234",
             thirdPartyIdentifier: "1234",
             email: "someone@somewhere.com",
@@ -40,74 +38,60 @@ final class AverSdkTests: XCTestCase {
             overrideThirdPartyIdentifier: false
         )
         
-        self.sdk.createCheck(options: options) { res, err in
-            response = res!
-            asyncExpectation.fulfill()
-        }
+        let result =  try self.sdk.createCheck(options: options)
+        let value = try result.get()
+        asyncExpectation.fulfill()
         
         self.waitForExpectations(timeout: 10) { error in
-            XCTAssertNotNil(response)
-            XCTAssertNil(error)
+            XCTAssertNotNil(value)
         }
     }
     
-    func testCreateCheckAccessCode() throws {
+    func testGetCheckAccessCode() throws {
         let asyncExpectation = expectation(description: "testCreateCheckAccessCode")
-        var response: AverCheckAccessLinkResponse?
         
-        self.sdk.createCheckAccessLink(id: "1234") { res, err in
-            response = res!
-            asyncExpectation.fulfill()
-        }
+        let result = try self.sdk.getCheckAccessLink(id: "1234")
+        let value = try result.get()
+        asyncExpectation.fulfill()
         
         self.waitForExpectations(timeout: 10) { error in
-            XCTAssertNotNil(response)
-            XCTAssertNil(error)
+            XCTAssertNotNil(value)
         }
     }
     
     func testGetCheckById() throws {
         let asyncExpectation = expectation(description: "testGetCheckById")
-        var response: AverCheckDetailResponse?
         
-        self.sdk.getCheckById(id: "1234") { res, err in
-            response = res!
-            asyncExpectation.fulfill()
-        }
+        let result = try self.sdk.getCheckById(id: "1234")
+        let value = try result.get()
+        asyncExpectation.fulfill()
         
         self.waitForExpectations(timeout: 10) { error in
-            XCTAssertNotNil(response)
-            XCTAssertNil(error)
+            XCTAssertNotNil(value)
         }
     }
     
     func testGetCheckByThirdPartyIdentifier() throws {
         let asyncExpectation = expectation(description: "testGetCheckByThirdPartyIdentifier")
-        var response: AverCheckDetailResponse?
-        
-        self.sdk.getCheckByThirdPartyIdentifier(thirdPartyIdentifier: "1234", all: true) { res, err in
-            response = res!
-            asyncExpectation.fulfill()
-        }
+    
+        let result = try self.sdk.getCheckByThirdPartyIdentifier(thirdPartyIdentifier: "1234")
+        let value = try result.get()
+        asyncExpectation.fulfill()
         
         self.waitForExpectations(timeout: 10) { error in
-            XCTAssertNotNil(response)
-            XCTAssertNil(error)
+            XCTAssertNotNil(value)
         }
     }
     
     func testGetCheckResults() throws {
         let asyncExpectation = expectation(description: "testGetCheckResults")
-        var response: AverCheckDetailResponse?
-        
-        self.sdk.getCheckResults(id: "1234") { res, err in
-            response = res!
-            asyncExpectation.fulfill()
-        }
+
+        let result = try self.sdk.getCheckResults(id: "1234")
+        let value = try result.get()
+        asyncExpectation.fulfill()
         
         self.waitForExpectations(timeout: 10) { error in
-            XCTAssertNotNil(response)
-            XCTAssertNil(error)
+            XCTAssertNotNil(value)
         }
     }
 }

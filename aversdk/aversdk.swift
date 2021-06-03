@@ -13,85 +13,69 @@ public class AverSdk {
     
     init(baseUrl: String? = "https://app.goaver.com/api") {
         self.api = AverApi(baseUrl: baseUrl!)
-        self.token = "12412412412"
     }
     
-    public func auth(key: String, secret: String, completion: @escaping (String?, Error?) -> ()){
-        self.api.getAuthToken(key: key, secret: secret, completion: { (res, err) in
-            self.token = res
-            completion(res, err)
-        })
+    public func auth(key: String, secret: String) -> Result<String?, Error> {
+        let result: Result<String?, Error>
+        let res = self.api.getAuthToken(key: key, secret: secret)
+        switch res {
+            case .success(let auth):
+                print("Auth token: " + auth!.token)
+                self.token = auth!.token
+                result = .success(auth!.token)
+            case .failure(let error):
+                result = .failure(error)
+        }
+        return result
     }
     
-    private func refreshAuth(completion: @escaping (String?, Error?) -> ()){
-        self.api.refreshAuthToken(token: self.token!) { res, err in
-            if(res != nil){
-                self.token = res
-                completion(res, nil)
-            }
-            else if(err == nil && res == nil){
-                completion(res, AverAuthError.invalidCredentials)
-            }
-        }
+    private func refreshAuth() -> Result<String?,Error> {
+        let result: Result<String?, Error>
+        result = .success(self.token!)
+        //TODO: publish test API to prod for this to work
+        //let res = self.api.refreshAuthToken(token: self.token!)
+        //switch res {
+        //    case .success(let auth):
+        //        print("Auth refresh: " + auth!.token)
+        //        result = .success(auth!.token)
+        //    case .failure(let error):
+        //        result = .failure(error)
+        //}
+        return result
     }
     
-    public func createCheck(options: AverCheckCreateRequest, completion: @escaping (AverCheckCreateResponse?, Error?) -> ()){
-        self.refreshAuth() { res, err in
-            if(err != nil){
-                completion(nil, err)
-            }
-        }
-        
-        self.api.createCheck(token: self.token!, options: options) { res, err in
-            completion(res, err)
-        }
+    public func createCheck(options: AverCheckCreateRequest) throws -> Result<AverCheckCreateResponse?, Error> {
+        let refresh = try self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.createCheck(token: token!, options: options)
     }
     
-    public func createCheckAccessLink(id: String, completion: @escaping (AverCheckAccessLinkResponse?, Error?) -> ()){
-        self.refreshAuth() { res, err in
-            if(err != nil){
-                completion(nil, err)
-            }
-        }
-        
-        self.api.createCheckAccessLink(token: self.token!, id: id) { res, err in
-            completion(res, err)
-        }
+    public func getCheckAccessLink(id: String) throws -> Result<AverCheckAccessLinkResponse?, Error> {
+        let refresh = try self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.getCheckAccessLink(token: token!, id: id)
     }
     
-    public func getCheckById(id: String, completion: @escaping (AverCheckDetailResponse?, Error?) -> ()){
-        self.refreshAuth() { res, err in
-            if(err != nil){
-                completion(nil, err)
-            }
-        }
-        
-        self.api.getCheckById(token: self.token!, id: id) { res, err in
-            completion(res, err)
-        }
+    public func getCheckById(id: String) throws -> Result<AverCheckDetailResponse?, Error> {
+        let refresh = try self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.getCheckById(token: token!, id: id)
     }
     
-    public func getCheckByThirdPartyIdentifier(thirdPartyIdentifier: String, all: Bool? = true, completion: @escaping (AverCheckDetailResponse?, Error?) -> ()){
-        self.refreshAuth() { res, err in
-            if(err != nil){
-                completion(nil, err)
-            }
-        }
-        
-        self.api.getCheckByThirdPartyIdentifier(token: self.token!, thirdPartyIdentifier: thirdPartyIdentifier, all: all!) { res, err in
-            completion(res, err)
-        }
+    public func getCheckByThirdPartyIdentifier(thirdPartyIdentifier: String, all: Bool? = true) throws -> Result<AverCheckDetailResponse?, Error> {
+        let refresh = try self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.getCheckByThirdPartyIdentifier(token: token!, thirdPartyIdentifier: thirdPartyIdentifier)
     }
     
-    public func getCheckResults(id: String, completion: @escaping (AverCheckDetailResponse?, Error?) -> ()){
-        self.refreshAuth() { res, err in
-            if(err != nil){
-                completion(nil, err)
-            }
-        }
-        
-        self.api.getCheckResults(token: self.token!, id: id) { res, err in
-            completion(res, err)
-        }
+    public func getCheckResults(id: String) throws -> Result<AverCheckDetailResponse?, Error> {
+        let refresh = try self.refreshAuth()
+        let token = try refresh.get()
+
+        return self.api.getCheckResults(token: token!, id: id)
     }
 }

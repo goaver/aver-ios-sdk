@@ -10,5 +10,6 @@ import Foundation
 enum AverApiError: Error {
     case unauthorized
     case serverError
+    case urlError
 }
 

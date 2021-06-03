@@ -5,7 +5,7 @@
 
 import Foundation
 
-public class AverApi {
+internal class AverApi {
     private var baseUrl: String
     private enum HttpMethod {
         case get
@@ -16,44 +16,17 @@ public class AverApi {
         self.baseUrl = baseUrl
     }
     
-    public func getAuthToken(key: String, secret: String, completion: @escaping (String?, Error?) -> ()) {
-        guard let encodedKey = self.encodeKey(key: key, secret: secret) else { return }
-        self.callService(token: encodedKey, endpoint: "/auth/token", method: HttpMethod.get, params: nil, completion: { (data, error) in
-            if(error != nil){
-                completion(nil, error)
-            }
-            
-            do {
-                guard let data = data else { return }
-                let auth = try JSONDecoder().decode(AverAuthResponse.self, from: data)
-                completion(auth.token, nil)
-            }
-            catch{
-                completion(nil, error)
-            }
-        })
+    public func getAuthToken(key: String, secret: String) -> Result<AverAuthResponse?, Error> {
+        let encodedKey = self.encodeKey(key: key, secret: secret)
+        return self.callService(token: encodedKey!, endpoint: "/auth/token", method: HttpMethod.get, params: nil, modelType: AverAuthResponse.self) as Result<AverAuthResponse?,Error>
     }
     
-    public func refreshAuthToken(token: String, completion: @escaping (String?, Error?) -> ()){
+    public func refreshAuthToken(token: String) -> Result<AverAuthResponse?, Error> {
         let params: [String:Any] = ["token": token]
-        
-        self.callService(token: token, endpoint: "/auth/refresh/", method: HttpMethod.post, params: params, completion: { (data, error) in
-            if(error != nil){
-                completion(nil, error)
-            }
-            
-            do {
-                guard let data = data else { return }
-                let auth = try JSONDecoder().decode(AverAuthResponse.self, from: data)
-                completion(auth.token, nil)
-            }
-            catch{
-                completion(nil, error)
-            }
-        })
+        return self.callService(token: token, endpoint: "/auth/refresh/", method: HttpMethod.post, params: params, modelType: AverAuthResponse.self) as Result<AverAuthResponse?,Error>
     }
     
-    public func createCheck(token: String, options: AverCheckCreateRequest, completion: @escaping (AverCheckCreateResponse?, Error?) -> ()){
+    public func createCheck(token: String, options: AverCheckCreateRequest) -> Result<AverCheckCreateResponse?,Error> {
         let params: [String:Any] =
             ["groupId": options.groupId,
              "thirdPartyIdentifier": options.thirdPartyIdentifier,
@@ -63,132 +36,30 @@ public class AverApi {
              "skipPersonalAccessCode": options.skipPersonalAccessCode,
              "overrideThirdPartyIdentifier": options.overrideThirdPartyIdentifier]
         
-        self.callService(token: token, endpoint: "/check/create", method: HttpMethod.post, params: params, completion: { (data, error) in
-            if(error != nil){
-                completion(nil, error)
-            }
-             
-            do {
-                if(data == nil){
-                    return
-                }
-                guard let responseString = String(data: data!, encoding: .utf8) else { return }
-                print(responseString)
-                let res = try JSONDecoder().decode(AverCheckCreateResponse.self, from: data!)
-                completion(res, nil)
-            }
-            catch{
-                print(error)
-                completion(nil, error)
-            }
-        })
+        return self.callService(token: token, endpoint: "/check/create", method: HttpMethod.post, params: params, modelType: AverCheckCreateResponse.self) as Result<AverCheckCreateResponse?,Error>
     }
     
-    public func getCheckById(token: String, id: String, completion: @escaping (AverCheckDetailResponse?, Error?) -> ()){
-        self.callService(token: token, endpoint: "/check/" + id, method: HttpMethod.get, params: nil, completion: { (data, err) in
-            if(err != nil){
-                completion(nil, err)
-            }
-             
-            do {
-                if(data == nil){
-                    return
-                }
-                guard let responseString = String(data: data!, encoding: .utf8) else { return }
-                print(responseString)
-                let res = try JSONDecoder().decode(AverCheckDetailResponse.self, from: data!)
-                completion(res, nil)
-            }
-            catch{
-                print(error)
-                completion(nil, error)
-            }
-        })
+    public func getCheckById(token: String, id: String) -> Result<AverCheckDetailResponse?, Error> {
+        return self.callService(token: token, endpoint: "/check/" + id, method: HttpMethod.get, params: nil, modelType: AverCheckDetailResponse.self) as Result<AverCheckDetailResponse?, Error>
     }
     
-    public func getCheckByThirdPartyIdentifier(token: String, thirdPartyIdentifier: String, all: Bool, completion: @escaping (AverCheckDetailResponse?, Error?) -> ()){
-        var endpoint = "/check/getbythirdpartyidentifier/" + thirdPartyIdentifier
-        if(all){
-            endpoint = endpoint + "?all=true"
-        }
-        
-        self.callService(token: token, endpoint: endpoint, method: HttpMethod.get, params: nil, completion: { (data, error) in
-            if(error != nil){
-                completion(nil, error)
-            }
-             
-            do {
-                if(data == nil){
-                    return
-                }
-                guard let responseString = String(data: data!, encoding: .utf8) else { return }
-                print(responseString)
-                let res = try JSONDecoder().decode(AverCheckDetailResponse.self, from: data!)
-                completion(res, nil)
-            }
-            catch{
-                print(error)
-                completion(nil, error)
-            }
-        })
+    public func getCheckByThirdPartyIdentifier(token: String, thirdPartyIdentifier: String)  -> Result<AverCheckDetailResponse?, Error> {
+        return self.callService(token: token, endpoint: "/check/getbythirdpartyidentifier/" + thirdPartyIdentifier, method: HttpMethod.get, params: nil, modelType: AverCheckDetailResponse.self) as Result<AverCheckDetailResponse?,Error>
     }
     
-    public func getCheckResults(token: String, id: String, completion: @escaping (AverCheckDetailResponse?, Error?) -> ()){
-        self.callService(token: token, endpoint: "/check/" + id + "/results", method: HttpMethod.get, params: nil, completion: { (data, error) in
-            if(error != nil){
-                completion(nil, error)
-            }
-             
-            do {
-                if(data == nil){
-                    return
-                }
-                guard let responseString = String(data: data!, encoding: .utf8) else { return }
-                print(responseString)
-                let res = try JSONDecoder().decode(AverCheckDetailResponse.self, from: data!)
-                completion(res, nil)
-            }
-            catch{
-                print(error)
-                completion(nil, error)
-            }
-        })
+    public func getCheckResults(token: String, id: String)  -> Result<AverCheckDetailResponse?, Error> {
+        return self.callService(token: token, endpoint: "/check/" + id + "/results", method: HttpMethod.get, params: nil, modelType: AverCheckDetailResponse.self) as Result<AverCheckDetailResponse?, Error>
     }
     
-    public func createCheckAccessLink(token: String, id: String, language: String = "en", returnUrl: String = "", completion: @escaping (AverCheckAccessLinkResponse?, Error?) -> ()){
+    public func getCheckAccessLink(token: String, id: String, language: String = "en", returnUrl: String = "") -> Result<AverCheckAccessLinkResponse?, Error> {
         let params: [String:Any] = ["language": language, "returnUrl": returnUrl]
-        self.callService(token: token, endpoint: "/check/" + id + "/accesslink", method: HttpMethod.post, params: params, completion: { (data, error) in
-            if(error != nil){
-                completion(nil, error)
-            }
-             
-            do {
-                if(data == nil){
-                    return
-                }
-                guard let responseString = String(data: data!, encoding: .utf8) else { return }
-                print(responseString)
-                let res = try JSONDecoder().decode(AverCheckAccessLinkResponse.self, from: data!)
-                completion(res, nil)
-            }
-            catch{
-                print(error)
-                completion(nil, error)
-            }
-        })
+        return self.callService(token: token, endpoint: "/check/" + id + "/accesslink", method: HttpMethod.post, params: params, modelType: AverCheckAccessLinkResponse.self) as Result<AverCheckAccessLinkResponse?, Error>
     }
     
-    public func encodeKey(key: String, secret: String) -> String? {
-        let str = key + ":" + secret
-        let utf8str = str.data(using: .utf8)
-        if let base64Encoded = utf8str?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0)) {
-            return(base64Encoded)
-        }
-        return nil
-    }
-    
-    private func callService(token: String, endpoint:String, method: HttpMethod, params: Any?, completion: @escaping (Data?, Error?) -> ()) {
-        guard let url = URL(string: self.baseUrl + endpoint) else { return }
+    private func callService<T:Decodable>(token: String, endpoint:String, method: HttpMethod, params: Any?, modelType: T.Type) -> Result<T?,Error> {
+        var result: Result<T?, Error>!
+        
+        guard let url = URL(string: self.baseUrl + endpoint) else { return .failure(AverApiError.urlError) }
         var request = URLRequest(url: url)
         var tokenType = "Basic"
         if(endpoint != "/auth/token"){
@@ -201,30 +72,50 @@ public class AverApi {
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             request.httpMethod = "POST"
             do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: params!, options: .prettyPrinted) // pass dictionary to data object and set it as request body
+                request.httpBody = try JSONSerialization.data(withJSONObject: params!, options: .prettyPrinted)
             }
             catch let error {
                 print(error.localizedDescription)
-                completion(nil, error)
+                result = .failure(error)
+                return result
             }
         }
     
-        URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error)  in
+        let semaphore = DispatchSemaphore(value: 0)
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let httpResponse = response as? HTTPURLResponse else { return }
             let code = httpResponse.statusCode
-            
-            if(code == 500){
-                completion(nil, AverApiError.serverError)
+            if let data = data {
+                do{
+                    let obj = try JSONDecoder().decode(modelType, from: data)
+                    result = .success(obj)
+                }
+                catch{
+                    if(code == 500){
+                        result = .failure(AverApiError.serverError)
+                    }
+                    else if(code == 401){
+                        result = .failure(AverApiError.unauthorized)
+                    }
+                    else if(code != 200){
+                        result = .failure(NSError(domain:"averapi", code:httpResponse.statusCode, userInfo:nil))
+                    }
+                }
             }
-            else if(code == 401){
-                completion(nil, AverApiError.unauthorized)
-            }
-            else if(code != 200){
-                completion(nil, NSError(domain:"averapi", code:httpResponse.statusCode, userInfo:nil))
-            }
-            else{
-                completion(data, error)
-            }
-        }).resume()
+            semaphore.signal()
+        }.resume()
+        
+        _ = semaphore.wait(wallTimeout: .distantFuture)
+        return result
     }
+    
+    private func encodeKey(key: String, secret: String) -> String? {
+        let str = key + ":" + secret
+        let utf8str = str.data(using: .utf8)
+        if let base64Encoded = utf8str?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0)) {
+            return(base64Encoded)
+        }
+        return nil
+    }
+    
 }
